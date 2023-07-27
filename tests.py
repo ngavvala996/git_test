@@ -1,15 +1,31 @@
 import pytest
 
-@pytest.fixture
-def input_value():
-    input = 39
-    return input
+import pytest
 
-def test_divisible_by_three(input_value):
-    assert input_value % 3 == 0
 
-def test_divisible_by_seven(input_value):
-    assert input_value % 7 == 0
+# Define the reverse_string function
+def reverse_string(string):
+  return string[::-1]
 
-def test_divisible_by_eight(input_value):
-    assert input_value % 8 == 0
+
+# Here is an example of a test function
+def test_reversed_string():
+  assert reverse_string("hello") == "olleh"
+  assert reverse_string("world") == "dlrow"
+
+
+# Here is an example of a test class
+class TestStringFunctions:
+
+  def test_upper(self):
+    assert "hello".upper() == "HELLO"
+
+  def test_isupper(self):
+    assert "HELLO".isupper()
+    assert not "Hello".isupper()
+
+  def test_split(self):
+    s = "hello world"
+    assert s.split() == ["hello", "world"]
+    with pytest.raises(TypeError):
+      s.split(2)
