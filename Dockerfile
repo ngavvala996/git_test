@@ -7,8 +7,5 @@ WORKDIR /app
 # Copy the entire project directory into the container
 COPY . .
 
-# Install the Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
 # Run the pytest command
 CMD ["pytest"]
