@@ -1,11 +1,18 @@
 pipeline {
     agent any
+
     stages {
-        stage('Build') {
+        stage('Build and Test') {
             steps {
-                sh 'pip install --upgrade pip'
-                sh 'pip install pytest --force-reinstall'
-                sh 'pytest tests.py'
+                // Checkout source code from version control system
+                // Replace <REPO_URL> with the actual repository URL
+                git '<REPO_URL>'
+                
+                // Build the Docker image
+                sh 'docker build -t my-python-app .'
+                
+                // Run the Docker container and execute the pytest command
+                sh 'docker run --rm -v $PWD:/app my-python-app pytest'
             }
         }
     }
