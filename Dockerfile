@@ -7,5 +7,8 @@ WORKDIR /app
 # Copy the entire project directory into the container
 COPY . .
 
+# Install pytest
+RUN pip install pytest
+
 # Run the pytest command
 CMD ["pytest"]
